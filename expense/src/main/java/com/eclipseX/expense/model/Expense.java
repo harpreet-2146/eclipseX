@@ -3,8 +3,7 @@ package com.eclipseX.expense.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Expense {
-    private Long id;
+public class Expense extends BaseEntity {
     private String title;
     private BigDecimal amount;
     private String category;
@@ -14,7 +13,7 @@ public class Expense {
     public Expense() {}
 
     public Expense(Long id, String title, BigDecimal amount, String category, LocalDate date, String description) {
-        this.id = id;
+        setId(id);  // inherited from BaseEntity
         this.title = title;
         this.amount = amount;
         this.category = category;
@@ -22,9 +21,7 @@ public class Expense {
         this.description = description;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
+    // Getters and Setters (only for Expense-specific fields)
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
 
