@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Add/Edit Expense</title>
+   <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+   <h1 th:text="${expense.id != null ? 'Edit Expense' : 'Add New Expense'}">Add/Edit Expense</h1>
+
+
+   <form th:action="@{/save}" th:object="${expense}" method="post">
+       <input type="hidden" th:field="*{id}">
+
+
+       <div class="form-group">
+           <label for="title">Title</label>
+           <input type="text" id="title" th:field="*{title}" required>
+       </div>
+
+
+       <div class="form-group">
+           <label for="amount">Amount (₹)</label>
+           <input type="number" id="amount" th:field="*{amount}" step="0.01" required>
+       </div>
+
+
+       <div class="form-group">
+           <label for="category">Category</label>
+           <select id="category" th:field="*{category}">
+               <option value="">Select Category</option>
+               <option value="Food">Food</option>
+               <option value="Transport">Transport</option>
+               <option value="Shopping">Shopping</option>
+               <option value="Bills">Bills</option>
+               <option value="Entertainment">Entertainment</option>
+               <option value="Other">Other</option>
+           </select>
+       </div>
+
+
+       <div class="form-group">
+           <label for="date">Date</label>
+           <input type="date" id="date" th:field="*{date}">
+       </div>
+
+
+       <div class="form-group">
+           <label for="description">Description</label>
+           <textarea id="description" th:field="*{description}" rows="3"></textarea>
+       </div>
+
+
+       <div class="form-actions">
+           <button type="submit" class="btn btn-primary">Save</button>
+           <a href="/" class="btn">Cancel</a>
+       </div>
+   </form>
+</div>
+</body>
+</html>
