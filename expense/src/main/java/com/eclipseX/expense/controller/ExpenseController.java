@@ -5,6 +5,8 @@ import com.eclipseX.expense.service.ExpenseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.math.BigDecimal;
+import java.util.List;
 
 @Controller
 public class ExpenseController {
@@ -17,7 +19,15 @@ public class ExpenseController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("expenses", expenseService.getAllExpenses());
+        List<Expense> expenses = expenseService.getAllExpenses();
+        model.addAttribute("expenses", expenses);
+
+        BigDecimal total = expenses.stream()
+                .map(Expense::getAmount)
+                .filter(amount -> amount != null)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        model.addAttribute("total", total);
+
         return "index";
     }
 
