@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ExpenseRepository {
+public class ExpenseRepository implements IExpenseRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -34,15 +34,18 @@ public class ExpenseRepository {
         return expense;
     };
 
+    @Override
     public List<Expense> findAll() {
         return jdbcTemplate.query("SELECT * FROM expenses ORDER BY date DESC", rowMapper);
     }
 
+    @Override
     public Optional<Expense> findById(Long id) {
         List<Expense> results = jdbcTemplate.query("SELECT * FROM expenses WHERE id = ?", rowMapper, id);
         return results.isEmpty() ? Optional.empty() : Optional.of(results.get(0));
     }
 
+    @Override
     public Expense save(Expense expense) {
         if (expense.getId() == null) {
             return insert(expense);
@@ -81,6 +84,7 @@ public class ExpenseRepository {
         return expense;
     }
 
+    @Override
     public void deleteById(Long id) {
         jdbcTemplate.update("DELETE FROM expenses WHERE id = ?", id);
     }
