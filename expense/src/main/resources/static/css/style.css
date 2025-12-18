@@ -69,7 +69,7 @@ tr:hover {
 
 .btn-primary {
     background: linear-gradient(90deg, #a855f7, #00d9ff);
-    color: #fff;
+    color: #200d0d;
 }
 
 .btn-primary:hover {
@@ -113,7 +113,7 @@ tr:hover {
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.05);
-    color: #fff;
+    color: #b11a8b;
     font-size: 1rem;
 }
 
@@ -129,4 +129,24 @@ tr:hover {
     display: flex;
     gap: 15px;
     margin-top: 30px;
+}
+
+.total-box {
+    background: linear-gradient(90deg, rgba(168, 85, 247, 0.2), rgba(0, 217, 255, 0.2));
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 12px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+}
+
+.total-amount {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00d9ff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
