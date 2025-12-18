@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Expense Tracker</title>
+   <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <div class="container">
-    <div class="total-box">
-        <span>Total Expenses:</span>
-        <span class="total-amount">₹<span th:text="${total}">0</span></span>
-    </div>
-    <h1>Expense Tracker</h1>
-    <a href="/add" class="btn btn-primary">Add New Expense</a>
-    <table>
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Amount</th>
-            <th>Category</th>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="expense : ${expenses}">
-            <td th:text="${expense.title}"></td>
-            <td th:text="'₹' + ${expense.amount}"></td>
-            <td th:text="${expense.category}"></td>
-            <td th:text="${expense.date}"></td>
-            <td th:text="${expense.description}"></td>
-            <td>
-                <a th:href="@{/edit/{id}(id=${expense.id})}" class="btn btn-edit">Edit</a>
-                <a th:href="@{/delete/{id}(id=${expense.id})}" class="btn btn-delete" onclick="return confirm('Are you sure?')">Delete</a>
-            </td>
-        </tr>
-        <tr th:if="${#lists.isEmpty(expenses)}">
-            <td colspan="6" style="text-align: center;">No expenses found. Add one!</td>
-        </tr>
-        </tbody>
-    </table>
+   <h1>Expense Tracker</h1>
+
+
+   <a href="/add" class="btn btn-primary">Add New Expense</a>
+
+
+   <table>
+       <thead>
+       <tr>
+           <th>Title</th>
+           <th>Amount</th>
+           <th>Category</th>
+           <th>Date</th>
+           <th>Description</th>
+           <th>Actions</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr th:each="expense : ${expenses}">
+           <td th:text="${expense.title}"></td>
+           <td th:text="'₹' + ${expense.amount}"></td>
+           <td th:text="${expense.category}"></td>
+           <td th:text="${expense.date}"></td>
+           <td th:text="${expense.description}"></td>
+           <td>
+               <a th:href="@{/edit/{id}(id=${expense.id})}" class="btn btn-edit">Edit</a>
+               <a th:href="@{/delete/{id}(id=${expense.id})}" class="btn btn-delete" onclick="return confirm('Are you sure?')">Delete</a>
+           </td>
+       </tr>
+       <tr th:if="${#lists.isEmpty(expenses)}">
+           <td colspan="6" style="text-align: center;">No expenses found. Add one!</td>
+       </tr>
+       </tbody>
+   </table>
 </div>
 </body>
 </html>
