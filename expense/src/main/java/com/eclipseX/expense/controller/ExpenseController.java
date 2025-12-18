@@ -1,19 +1,20 @@
 package com.eclipseX.expense.controller;
 
 import com.eclipseX.expense.model.Expense;
-import com.eclipseX.expense.service.ExpenseService;
+import com.eclipseX.expense.service.IExpenseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
 public class ExpenseController {
 
-    private final ExpenseService expenseService;
+    private final IExpenseService expenseService;
 
-    public ExpenseController(ExpenseService expenseService) {
+    public ExpenseController(IExpenseService expenseService) {
         this.expenseService = expenseService;
     }
 
