@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ExpenseApplication {
 
-	public static void main(String[] args) {
-		System.out.print("hello");
+	public static void main(String[] args){
 		SpringApplication.run(ExpenseApplication.class, args);
+		System.out.print("working");
 	}
 }
