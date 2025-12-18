@@ -24,7 +24,7 @@ A simple CRUD web application to track personal expenses, built with Spring Boot
 ```bash
    ./mvnw spring-boot:run
 ```
-4. Open `http://localhost:8082` in your browser
+4. Open `http://localhost:8081` in your browser
 
 ## Project Structure
 ```
